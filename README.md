@@ -10,9 +10,9 @@ The manifesto calls the pipeline from knowledge to verified code a Knowledge Com
 
 It does not. Agent CLIs already are that compiler. They read repositories, run tools, write files, and iterate against tests. What was missing was not capability but a defined loop: what to change first, what to compute rather than guess, what must never be edited to make a build pass.
 
-That loop is what these six skills encode. There is no binary to install and no service to depend on, which is also the honest test of the methodology's central claim: if this only worked inside one vendor's platform, it would not be the stack-independent approach the manifesto argues for.
+That loop is what these eight skills encode. There is no binary to install and no service to depend on, which is also the honest test of the methodology's central claim: if this only worked inside one vendor's platform, it would not be the stack-independent approach the manifesto argues for.
 
-## The six skills
+## The eight skills
 
 | Skill | Does |
 |---|---|
@@ -87,7 +87,7 @@ Worth stating outside the skill files, because they are the difference between t
 
 ## Status
 
-Version 0.1.0, draft, alongside schema v0.1.0. These will change as they get used in anger; the friction log from real use is the intended source of v0.2.
+Version 0.2.0, draft, alongside schema v0.1.0. These will change as they get used in anger; the friction log from real use is the intended source of v0.2.
 
 ## Licence
 
