@@ -22,6 +22,8 @@ That loop is what these six skills encode. There is no binary to install and no 
 | `verify` | Schema validation, contract results, knowledge debt report |
 | `drift-check` | Finds code that changed without its knowledge changing |
 | `mine` | Derives draft knowledge from an existing codebase. The brownfield path |
+| `regeneration-test` | Audits whether the knowledge is actually sufficient, in an independent context |
+| `reconcile` | Turns drift into a drafted knowledge change for review, not a chore |
 
 ## The loop
 
@@ -34,9 +36,18 @@ task
   -> verify               validation, contracts, debt
   -> pull request
        drift-check runs here, and blocks code-ahead drift
+         -> reconcile     drift becomes a drafted knowledge change, for review
 ```
 
 Brownfield repositories start at `mine` instead of `knowledge-delta`.
+
+Running alongside all of it, on a schedule rather than on demand:
+
+```
+regeneration-test    proves the knowledge is still sufficient
+```
+
+Continuous integration proves your code still works. That one proves you still understand your system. It never blocks a merge; it reports a health signal, the way a dependency audit does.
 
 ## What is model work and what is not
 
@@ -71,6 +82,8 @@ Worth stating outside the skill files, because they are the difference between t
 - **Never regenerate outside the computed scope.** If something outside it must change, the knowledge links are wrong; fix them first.
 - **Code-ahead drift blocks a merge.** Reconcile, revert, or record it as drift debt with an owner and a date. Silence is not an option.
 - **Security review is not replaced.** Generated code is untrusted code from an unfamiliar author, and contract tests do not catch injection flaws, resource leaks, or a bad dependency.
+- **An agent must not verify its own work,** and must not see the implementation it is regenerating. This one is not caution, it is the difference between an experiment and a formality: the reference demo originally had both implementations written by one agent in one session and proved nothing at all. Run independently, the same knowledge failed a fifth of its contracts immediately.
+- **A reconciliation is never merged without human review.** Whether the code does what the system *should* do is a human question, and an incident hotfix is exactly where those two diverge.
 
 ## Status
 
