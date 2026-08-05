@@ -32,7 +32,7 @@ No semantic understanding is needed, only the observation that a build artifact 
 
 4. **Confirm it is behavioural.** This is where your judgment is needed, because the mechanical rule over-reports. A pure refactor with no observable behaviour change is not drift. Ask: could a contract distinguish before from after? If no, it is a refactor; note it and move on. If yes, or if you are unsure, it is drift.
 
-5. **Cross-check the lock files.** `npx regen-debt .` reports declared drift and, in a git repository, compares each lock's `knowledge_version` against the last commit touching that module's knowledge.
+5. **Cross-check the lock files.** `node <schema>/tools/debt.mjs .` reports declared drift and, in a git repository, compares each lock's `knowledge_version` against the last commit touching that module's knowledge.
 
 ## What to do about it
 

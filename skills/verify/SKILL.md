@@ -10,7 +10,7 @@ Three separate questions, asked in order. Do not conflate them.
 ## 1. Is the knowledge well-formed?
 
 ```bash
-npx regen-validate .
+node <schema>/tools/validate.mjs .
 ```
 
 Errors mean the tree is broken: bad frontmatter, dangling references, duplicate IDs, unknown modules, malformed lock files. Fix all of them; nothing downstream is meaningful until this passes.
@@ -26,7 +26,7 @@ If the suite cannot be run, say so plainly. Never infer that contracts pass from
 ## 3. What is the knowledge debt?
 
 ```bash
-npx regen-debt .
+node <schema>/tools/debt.mjs .
 ```
 
 Four metrics, and they mean different things:

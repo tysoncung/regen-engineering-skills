@@ -34,12 +34,12 @@ Any task that changes what the system does. If the task changes only how it does
 
 5. **Validate.** Run the schema validator. Fix everything it reports before continuing:
    ```bash
-   npx regen-validate .
+   node <schema>/tools/validate.mjs .
    ```
 
 6. **Report the delta and stop.** Show the human:
    - Which files were added or changed, and why
-   - The regeneration scope (run the `impact` skill, or `npx regen-impact <ID>`)
+   - The regeneration scope (run the `impact` skill, or `node <schema>/tools/impact.mjs <ID>`)
    - Any assumption you had to make, recorded as an `ASM-` item rather than left in your head
    - Any question you could not answer from the existing knowledge
 

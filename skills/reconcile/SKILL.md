@@ -37,7 +37,7 @@ If the change was a pure refactor with no observable behaviour change, there is 
 
 5. **Write or update a contract** if the new behaviour is checkable. Unverified reconciled knowledge is barely better than a comment, because nothing stops the next regeneration from losing it.
 
-6. **Validate**: `npx regen-validate .`
+6. **Validate**: `node <schema>/tools/validate.mjs .`
 
 7. **Clear the drift debt** in the module's lock once the delta is merged: set `drift: none` and remove the `drift_debt` block.
 
