@@ -12,7 +12,7 @@ It does not. Agent CLIs already are that compiler. They read repositories, run t
 
 That loop is what these eight skills encode. There is no binary to install and no service to depend on, which is also the honest test of the methodology's central claim: if this only worked inside one vendor's platform, it would not be the stack-independent approach the manifesto argues for.
 
-## The nine skills
+## The eleven skills
 
 | Skill | Does |
 |---|---|
@@ -25,6 +25,8 @@ That loop is what these eight skills encode. There is no binary to install and n
 | `regeneration-test` | Audits whether the knowledge is actually sufficient, in an independent context |
 | `reconcile` | Turns drift into a drafted knowledge change for review, not a chore |
 | `librarian` | Reads the whole tree, not a diff, for contradictions and decay |
+| `gatherer` | Finds changes that implied knowledge nobody wrote down |
+| `trigger` | Decides whether regenerating is worth its cost, and refuses when it would be harmful |
 
 ## The loop
 
@@ -47,11 +49,15 @@ Running alongside all of it, on a schedule rather than on demand:
 ```
 regeneration-test    proves the knowledge is still sufficient
 librarian            proves the knowledge is still coherent
+gatherer             catches what changed and was never written down
+trigger              proposes regeneration, and refuses when it would destroy something
 ```
 
 Continuous integration proves your code still works. Those two prove you still understand your system. Neither blocks a merge; they report a health signal, the way a dependency audit does.
 
-Note what the first eight have in common: every one begins "use when", and waits for a person who already suspects something. That is the wrong shape for decay, which happens silently and fastest when everyone is busy, which is exactly when nobody runs a knowledge audit. `librarian` is the first skill here that is not invoked because something is already suspected, and [REP-0006](https://github.com/tysoncung/regen.engineering/blob/main/reps/REP-0006-continuous-knowledge-operations.md) specifies three more.
+Note what the first eight have in common: every one begins "use when", and waits for a person who already suspects something. That is the wrong shape for decay, which happens silently and fastest when everyone is busy, which is exactly when nobody runs a knowledge audit. `librarian` was the first skill here that is not invoked because something is already suspected. `gatherer` and `trigger` complete the set [REP-0006](https://github.com/tysoncung/regen.engineering/blob/main/reps/REP-0006-continuous-knowledge-operations.md) specifies, with the Monitor shipping as a tool rather than a skill because its output is a ranked list and ranking is arithmetic.
+
+All four propose. None merges. That boundary matters more the more of this runs unattended, because a system that both proposes and disposes has quietly become the author of the software with nobody deciding that it should.
 
 ## What is model work and what is not
 
