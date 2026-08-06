@@ -37,7 +37,7 @@ The insight that makes it work: **nobody writes documentation from a blank page,
 
 6. **Write contracts for what you can verify.** Where tests exist, they are close to contracts already; restate them at the interface boundary. Where none exist, write the contract you believe should hold and mark it draft.
 
-7. **Validate.** `node <schema>/tools/validate.mjs .`
+7. **Validate.** `npx -p regen-engineering-schema regen-validate .`
 
 8. **Hand it to a domain expert.** State clearly what you are asking for: not approval, but correction. Point at the low-confidence items first. Their corrections are the highest-value knowledge capture the organisation will ever do, because that is exactly the knowledge that existed only in heads.
 

@@ -11,7 +11,7 @@ Produce an implementation from knowledge, at the smallest scope that covers the 
 
 Stop and say so if any fails:
 
-- The knowledge validates: `node <schema>/tools/validate.mjs .` passes
+- The knowledge validates: `npx -p regen-engineering-schema regen-validate .` passes
 - The impact scope is known and agreed (see the `impact` skill)
 - Every module in scope has at least one contract. **Regenerating a module no contract verifies is not permitted.** Nothing would catch an error, and you would be replacing working code with unverified code
 - The knowledge delta has been reviewed by a human, not just written by you

@@ -11,15 +11,15 @@ Do not reason about blast radius yourself. It is deterministic graph traversal o
 
 1. **Run the tool.** For a changed knowledge item:
    ```bash
-   node <schema>/tools/impact.mjs BR-002
+   npx -p regen-engineering-schema regen-impact BR-002
    ```
    For everything asserted about a module:
    ```bash
-   node <schema>/tools/impact.mjs --module customer
+   npx -p regen-engineering-schema regen-impact --module customer
    ```
    To map an actual diff back to scope:
    ```bash
-   node <schema>/tools/impact.mjs --changed $(git diff --name-only main...HEAD)
+   npx -p regen-engineering-schema regen-impact --changed $(git diff --name-only main...HEAD)
    ```
    Add `--json` when you need to consume the result rather than show it.
 
