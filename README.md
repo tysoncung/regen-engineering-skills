@@ -87,7 +87,9 @@ Worth stating outside the skill files, because they are the difference between t
 
 ## Status
 
-Version 0.2.0, draft, alongside schema v0.1.0. These will change as they get used in anger; the friction log from real use is the intended source of v0.2.
+Version 0.3.0, draft, alongside [schema 0.3.1](https://www.npmjs.com/package/regen-engineering-schema).
+
+These changed because they were used in anger. Running the change loop and the reconciliation loop end to end on the reference demo produced eleven findings, and the ones that mattered are now in the skills themselves: `verify` warns that traceability counts contracts which exist rather than contracts which would fail, `drift-check` documents what a clean result does not prove, and `reconcile` has a section on hunting for justification you invented. Friction logs live in the demo repository under `docs/`.
 
 ## Licence
 
