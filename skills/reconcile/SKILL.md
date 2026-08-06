@@ -43,6 +43,12 @@ If the change was a pure refactor with no observable behaviour change, there is 
 
 8. **Report and stop.** Show the human the proposed delta, the evidence, what you could not determine, and anything the change contradicts.
 
+## The failure mode to hunt for in your own draft
+
+Before showing a reconciliation to anyone, reread it looking for **justification you invented**. This is not hypothetical: exercising this skill produced a draft asserting a plausible cause for a hotfix that the evidence did not support, and it read as the most competent sentence in the file. Fluency is exactly what makes it dangerous.
+
+Check every causal claim against the diff and the commit message. If the commit does not say why, your knowledge must not either; write "the reason was not recorded" and leave it. Laundering scepticism into expertise is worse than leaving a gap, because a gap invites a question and a confident wrong sentence closes it.
+
 ## Hard rules
 
 - **Never merge a reconciliation without human review.** The whole point is that a person decides whether what the code does is what the system *should* do. Those are different questions, and an incident hotfix is exactly where they diverge.
