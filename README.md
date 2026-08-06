@@ -12,7 +12,7 @@ It does not. Agent CLIs already are that compiler. They read repositories, run t
 
 That loop is what these eight skills encode. There is no binary to install and no service to depend on, which is also the honest test of the methodology's central claim: if this only worked inside one vendor's platform, it would not be the stack-independent approach the manifesto argues for.
 
-## The eight skills
+## The nine skills
 
 | Skill | Does |
 |---|---|
@@ -24,6 +24,7 @@ That loop is what these eight skills encode. There is no binary to install and n
 | `mine` | Derives draft knowledge from an existing codebase. The brownfield path |
 | `regeneration-test` | Audits whether the knowledge is actually sufficient, in an independent context |
 | `reconcile` | Turns drift into a drafted knowledge change for review, not a chore |
+| `librarian` | Reads the whole tree, not a diff, for contradictions and decay |
 
 ## The loop
 
@@ -45,9 +46,12 @@ Running alongside all of it, on a schedule rather than on demand:
 
 ```
 regeneration-test    proves the knowledge is still sufficient
+librarian            proves the knowledge is still coherent
 ```
 
-Continuous integration proves your code still works. That one proves you still understand your system. It never blocks a merge; it reports a health signal, the way a dependency audit does.
+Continuous integration proves your code still works. Those two prove you still understand your system. Neither blocks a merge; they report a health signal, the way a dependency audit does.
+
+Note what the first eight have in common: every one begins "use when", and waits for a person who already suspects something. That is the wrong shape for decay, which happens silently and fastest when everyone is busy, which is exactly when nobody runs a knowledge audit. `librarian` is the first skill here that is not invoked because something is already suspected, and [REP-0006](https://github.com/tysoncung/regen.engineering/blob/main/reps/REP-0006-continuous-knowledge-operations.md) specifies three more.
 
 ## What is model work and what is not
 
@@ -56,6 +60,8 @@ A design line runs through this pack: **the model does judgment, scripts do the 
 Impact analysis and debt metrics are deterministic traversals of the knowledge links. Asking a model to eyeball a blast radius is strictly worse than computing it, so those skills shell out to [regen-engineering-schema](https://github.com/tysoncung/regen-engineering-schema) and then apply judgment to what the script cannot see, such as whether the computed scope matches what the change actually means in prose.
 
 What genuinely needs a model: drafting knowledge from a vague task, mining rules out of legacy conditionals, writing implementations, and deciding whether a change is behavioural or a refactor.
+
+`librarian` is where that line is drawn most carefully, because it is the easiest place to get wrong. `regen-librarian` compares numbers, counts references, and checks dates, all of which are arithmetic. Whether two rules actually contradict each other is not, and the manifesto says so plainly: structural tooling can detect that knowledge is missing, and cannot detect that it is wrong. That claim stays true of validators. It is not true of a reader.
 
 ## Install
 
