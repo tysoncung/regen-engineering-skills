@@ -34,6 +34,15 @@ No semantic understanding is needed, only the observation that a build artifact 
 
 5. **Cross-check the lock files.** `node <schema>/tools/debt.mjs .` reports declared drift and, in a git repository, compares each lock's `knowledge_version` against the last commit touching that module's knowledge.
 
+## What this does not catch
+
+The rule fires when implementation files change and knowledge files do not. Two consequences worth knowing before you trust a clean result:
+
+- **On a branch that changes both, it always passes.** It cannot tell whether the knowledge that moved had anything to do with the code that moved. A large change with a cosmetic knowledge edit reads identically to a careful one.
+- **It is a merge-time check, not a review-time one.** Its value is catching the hotfix that lands with no knowledge at all, which is what it was built for. Do not read a clean result on a feature branch as evidence the knowledge is right.
+
+Judging whether the knowledge actually describes the change is human work, and no tool here does it.
+
 ## What to do about it
 
 **Blocking finding.** Report code-ahead drift as blocking. The author has three legitimate options, and you should say which you recommend:

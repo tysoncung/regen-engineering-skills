@@ -36,6 +36,8 @@ Four metrics, and they mean different things:
 - **Integrity**: modules with code-ahead drift. **Target zero.** This is the rot metric, and a non-zero value means the system knows things its source of truth does not.
 - **Traceability**: active rules with both a verifying contract and an implementing module.
 
+**Traceability at 100% is weaker than it sounds.** It counts rules that have a contract pointing at them. It cannot tell whether that contract would fail if the rule were violated. Observed on the reference demo: three of five new scenarios passed against an implementation that ignored the new rule entirely, while the metric read fully verified. When you add a rule, deliberately break it once and confirm a contract goes red. A contract nobody has seen fail is a contract nobody has tested.
+
 The report also flags possible under-linking: an item whose prose cites another module's items without declaring that module in `affects`. Take these seriously. A missing link silently shrinks the regeneration scope, which produces confident, incomplete work, and that is the worst failure mode this methodology has.
 
 ## Report
