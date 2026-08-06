@@ -36,7 +36,19 @@ Four metrics, and they mean different things:
 - **Integrity**: modules with code-ahead drift. **Target zero.** This is the rot metric, and a non-zero value means the system knows things its source of truth does not.
 - **Traceability**: active rules with both a verifying contract and an implementing module.
 
-**Traceability at 100% is weaker than it sounds.** It counts rules that have a contract pointing at them. It cannot tell whether that contract would fail if the rule were violated. Observed on the reference demo: three of five new scenarios passed against an implementation that ignored the new rule entirely, while the metric read fully verified. When you add a rule, deliberately break it once and confirm a contract goes red. A contract nobody has seen fail is a contract nobody has tested.
+**Traceability at 100% is weaker than it sounds.** It counts rules that have a contract pointing at them. It cannot tell whether that contract would fail if the rule were violated. Observed on the reference demo: three of five new scenarios passed against an implementation that ignored the new rule entirely, while the metric read fully verified.
+
+### 4. Do the contracts assert anything?
+
+Automate the check rather than remembering to do it. Run the whole suite against a **straw implementation**: a server that answers every request with a plausible shape and no behaviour at all, typically an empty JSON object with a 200.
+
+Every scenario should fail. Any that passes is asserting nothing, and the rule it claims to verify is unverified no matter what traceability says.
+
+The reference demo does this in `contracts/vacuity.mjs`, in CI on every run. It found a vacuous scenario on its first execution: a step asserting "authentication succeeds" checked only for a 200 status, which the straw returns for everything. The fix was to assert that the response identifies the customer who registered.
+
+Two habits follow from it. Assertions should name a value, not a status, wherever the prose names one. And a `Given` step is a precondition: if it fails, the scenario never reached its subject, so it should stop loudly rather than continue into assertions that now mean nothing.
+
+A contract nobody has seen fail is a contract nobody has tested.
 
 The report also flags possible under-linking: an item whose prose cites another module's items without declaring that module in `affects`. Take these seriously. A missing link silently shrinks the regeneration scope, which produces confident, incomplete work, and that is the worst failure mode this methodology has.
 
