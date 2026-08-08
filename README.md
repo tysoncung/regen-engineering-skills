@@ -103,6 +103,12 @@ Version 0.3.0, draft, alongside [schema 0.3.1](https://www.npmjs.com/package/reg
 
 These changed because they were used in anger. Running the change loop and the reconciliation loop end to end on the reference demo produced eleven findings, and the ones that mattered are now in the skills themselves: `verify` warns that traceability counts contracts which exist rather than contracts which would fail, `drift-check` documents what a clean result does not prove, and `reconcile` has a section on hunting for justification you invented. Friction logs live in the demo repository under `docs/`.
 
+## Where these are exercised
+
+- [regen-engineering-demo](https://github.com/tysoncung/regen-engineering-demo), the stateless reference.
+- [regen-engineering-stateful](https://github.com/tysoncung/regen-engineering-stateful), the reference for systems that own data.
+- [simple-cmdb](https://github.com/tysoncung/simple-cmdb), the brownfield pilot, where the standing agents run weekly against a real tree.
+
 ## Licence
 
 MIT for the skills. Documentation is CC BY-SA 4.0.
